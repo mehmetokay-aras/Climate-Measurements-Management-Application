@@ -6,6 +6,11 @@ public class Main {
         System.out.println(deneme1.toString());
         System.out.println(deneme2.toString());
         System.out.println(deneme3.toString());
-        Temperature deneme4 = new Temperature(65);
+        WindSpeed deneme4 = new WindSpeed();
+        WindSpeed deneme5 = new WindSpeed(50);
+        WindSpeed deneme6 = new WindSpeed(deneme4);
+        System.out.println(deneme4.toString());
+        System.out.println(deneme5.toString());
+        System.out.println(deneme6.toString());
     }
 }
