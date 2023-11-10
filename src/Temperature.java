@@ -3,7 +3,7 @@ import java.util.Random;
 public class Temperature {
     // Fields to store temperature measurements in Celsius, Fahrenheit, and Kelvin
     private double celsiusMeasurement;
-    private double fahrenheitMeasurement;
+    private  double fahrenheitMeasurement;
     private double kelvinMeasurement;
 
     // Constants for the valid range of temperature measurements
@@ -78,5 +78,22 @@ public class Temperature {
     // Private method to check if a value is within the valid range
     private boolean isInRange(double value) {
         return value >= MIN_VALUE && value <= MAX_VALUE;
+    }
+    // Override the equals method to compare Temperature objects
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Temperature otherTemperature = (Temperature) obj;
+
+        // Compare each field for equality
+        return Double.compare(otherTemperature.celsiusMeasurement, celsiusMeasurement) == 0 &&
+                Double.compare(otherTemperature.fahrenheitMeasurement, fahrenheitMeasurement) == 0 &&
+                Double.compare(otherTemperature.kelvinMeasurement, kelvinMeasurement) == 0;
     }
 }

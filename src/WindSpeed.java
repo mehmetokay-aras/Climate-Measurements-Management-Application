@@ -64,4 +64,21 @@ public class WindSpeed {
     private boolean isInRange(double value) {
         return value >= MIN_VALUE && value <= MAX_VALUE;
     }
+
+    // Override the equals method to compare WindSpeed objects
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        WindSpeed otherWindSpeed = (WindSpeed) obj;
+
+        // Compare each field for equality
+        return Double.compare(otherWindSpeed.metersPerSecond, metersPerSecond) == 0 &&
+                Double.compare(otherWindSpeed.kmPerHour, kmPerHour) == 0;
+    }
 }
