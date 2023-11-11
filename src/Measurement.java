@@ -12,7 +12,7 @@ public class Measurement {
     public Measurement(int year,int monthCode){
         if (isyearinrange(year) && ismonthinrange(monthCode)) {
             this.monthCode=monthCode;
-            this.yearcode = getYearcode();
+            this.yearcode = year;
             this.year = initializeyear(year);
             this.month = initializemonth(monthCode);
         }

@@ -1,5 +1,4 @@
 import java.util.Random;
-
 public class Temperature extends Measurement {
     // Fields to store temperature measurements in Celsius, Fahrenheit, and Kelvin
     private double celsiusMeasurement;

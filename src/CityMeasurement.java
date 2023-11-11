@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class CityMeasurement extends Measurement{
     private Humidity humidity;
     private Temperature temperature;
@@ -54,10 +52,10 @@ public class CityMeasurement extends Measurement{
         CityMeasurement otherCityMeasurement = (CityMeasurement) obj;
 
         return super.equals(obj) &&
-                Objects.equals(humidity, otherCityMeasurement.humidity) &&
-                Objects.equals(temperature, otherCityMeasurement.temperature) &&
-                Objects.equals(windSpeed, otherCityMeasurement.windSpeed) &&
-                Objects.equals(radiationAbsorption, otherCityMeasurement.radiationAbsorption);
+                humidity.equals(otherCityMeasurement.humidity) &&
+                temperature.equals(otherCityMeasurement.temperature) &&
+                windSpeed.equals(otherCityMeasurement.windSpeed) &&
+                radiationAbsorption.equals(otherCityMeasurement.radiationAbsorption);
     }
 }
 
