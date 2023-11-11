@@ -1,30 +1,35 @@
 public class Measurement {
     private String month;
     private int year;
+    private int yearcode;
     private int monthCode;
     public Measurement(){
         month ="JANUARY";
         year=2020;
         monthCode = 0;
+        yearcode=0;
     }
     public Measurement(int year,int monthCode){
         if (isyearinrange(year) && ismonthinrange(monthCode)) {
             this.monthCode=monthCode;
+            this.yearcode = getYearcode();
             this.year = initializeyear(year);
             this.month = initializemonth(monthCode);
         }
         else{
-            throw new IllegalArgumentException("Measurement outside the range. For year(0-3),for month(0-12");
+            throw new IllegalArgumentException("Measurement outside the range. For year[0-3),for month[0-12)");
         }
     }
     public Measurement(Measurement measurement){
         this.year=measurement.getYear();
+        this.yearcode=measurement.getYearcode();
         this.month=measurement.getMonth();
         this.monthCode=measurement.getMonthCode();
     }
     public String getMonth(){return month;}
     public int getYear(){return year;}
     public int getMonthCode(){return monthCode;}
+    public int getYearcode(){return yearcode;}
     private boolean isyearinrange(int year){return ((year<3)&&(year>=0));}
     private boolean ismonthinrange(int month){return ((month<12)&&(month>=0));}
     private int initializeyear(int year){

@@ -18,11 +18,11 @@ public class RadiationAbsorption extends Measurement {
         radiationIntensity = getRandomRadiationIntensity();
     }
 
-    public RadiationAbsorption(int year, int month, double unitAbsorptionValue) {
+    public RadiationAbsorption(int year, int month, double unitAbsorptionValue,RadiationIntensity radiationIntensity) {
         super(year, month);
         if (isInRange(unitAbsorptionValue)) {
             this.unitAbsorptionValue = unitAbsorptionValue;
-            radiationIntensity = getRandomRadiationIntensity();
+            this.radiationIntensity = radiationIntensity;
         } else {
             throw new IllegalArgumentException("Measurement outside the range (" + MIN_VALUE + "-" + MAX_VALUE + ")");
         }
