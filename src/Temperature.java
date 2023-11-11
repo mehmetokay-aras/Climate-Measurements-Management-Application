@@ -1,25 +1,26 @@
 import java.util.Random;
 
-public class Temperature {
+public class Temperature extends Measurement {
     // Fields to store temperature measurements in Celsius, Fahrenheit, and Kelvin
     private double celsiusMeasurement;
-    private  double fahrenheitMeasurement;
+    private double fahrenheitMeasurement;
     private double kelvinMeasurement;
 
     // Constants for the valid range of temperature measurements
-    private final double MIN_VALUE = -40.0;
-    private final double MAX_VALUE = 50.0;
+    private static final double MIN_VALUE = -40.0;
+    private static final double MAX_VALUE = 50.0;
 
     // Default constructor initializes temperature measurements using random values
-    public Temperature() {
+    public Temperature(int year,int month) {
+        super(year,month); // Call the default constructor of the base class Measurement
         celsiusMeasurement = initializeTemperature();
         fahrenheitMeasurement = convertFahrenheit();
         kelvinMeasurement = convertKelvin();
     }
 
     // Parameterized constructor initializes temperature measurements with a specified Celsius value
-    public Temperature(double celsiusMeasurement) {
-        // Check if the provided Celsius value is within the valid range
+    public Temperature(int year,int month,double celsiusMeasurement) {
+        super(year,month); // Call the parameterized constructor of the base class Measurement
         if (isInRange(celsiusMeasurement)) {
             this.celsiusMeasurement = celsiusMeasurement;
             fahrenheitMeasurement = convertFahrenheit();
@@ -31,10 +32,11 @@ public class Temperature {
     }
 
     // Copy constructor creates a new Temperature object from an existing one
-    public Temperature(Temperature aTemperature) {
-        celsiusMeasurement = aTemperature.getCelsiusMeasurement();
-        fahrenheitMeasurement = aTemperature.getFahrenheitMeasurement();
-        kelvinMeasurement = aTemperature.getKelvinMeasurement();
+    public Temperature(Temperature measurement) {
+        super(measurement.getYear(),measurement.getMonthCode()); // Call the copy constructor of the base class Measurement
+        this.celsiusMeasurement = measurement.getCelsiusMeasurement();
+        this.fahrenheitMeasurement = measurement.getFahrenheitMeasurement();
+        this.kelvinMeasurement = measurement.getKelvinMeasurement();
     }
 
     // Private method to initialize temperature with a random value in the valid range
@@ -64,12 +66,11 @@ public class Temperature {
     public double getKelvinMeasurement() {
         return kelvinMeasurement;
     }
-
-    // Override toString method to provide a string representation of the Temperature object
+    // Override the toString method to provide a string representation of the Temperature object
+    @Override
     public String toString() {
-        return String.format("Celsius: %.2f Fahrenheit: %.2f Kelvin: %.2f", getCelsiusMeasurement(), getFahrenheitMeasurement(), getKelvinMeasurement());
+        return super.toString() + " Celsius: " + getCelsiusMeasurement() + " Fahrenheit: " + getFahrenheitMeasurement() + " Kelvin: " + getKelvinMeasurement();
     }
-
 
     private static double truncateToTwoDecimals(double value) {
         return Math.floor(value * 100) / 100;
@@ -79,6 +80,7 @@ public class Temperature {
     private boolean isInRange(double value) {
         return value >= MIN_VALUE && value <= MAX_VALUE;
     }
+
     // Override the equals method to compare Temperature objects
     @Override
     public boolean equals(Object obj) {
@@ -91,9 +93,11 @@ public class Temperature {
 
         Temperature otherTemperature = (Temperature) obj;
 
-        // Compare each field for equality
-        return Double.compare(otherTemperature.celsiusMeasurement, celsiusMeasurement) == 0 &&
+        // Compare each field for equality, including the base class fields
+        return super.equals(obj) &&
+                Double.compare(otherTemperature.celsiusMeasurement, celsiusMeasurement) == 0 &&
                 Double.compare(otherTemperature.fahrenheitMeasurement, fahrenheitMeasurement) == 0 &&
                 Double.compare(otherTemperature.kelvinMeasurement, kelvinMeasurement) == 0;
     }
+
 }
