@@ -52,7 +52,7 @@ public class WindSpeed extends Measurement {
 
     @Override
     public String toString() {
-        return " metersPerSecond: " + getMetersPerSecond() + " kmPerHour: " + getKmPerHour();
+        return " Wind speed metersPerSecond: " + getMetersPerSecond() + " Wind speed kmPerHour: " + getKmPerHour();
     }
 
     @Override
