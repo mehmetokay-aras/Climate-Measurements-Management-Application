@@ -9,6 +9,12 @@ public class Temperature extends Measurement {
     // Constants for the valid range of temperature measurements
     private static final double MIN_VALUE = -40.0;
     private static final double MAX_VALUE = 50.0;
+    public Temperature(){
+        super();
+        celsiusMeasurement =initializeTemperature();
+        fahrenheitMeasurement = convertFahrenheit();
+        kelvinMeasurement = convertKelvin();
+    }
 
     // Default constructor initializes temperature measurements using random values
     public Temperature(int year,int month) {
@@ -69,7 +75,7 @@ public class Temperature extends Measurement {
     // Override the toString method to provide a string representation of the Temperature object
     @Override
     public String toString() {
-        return super.toString() + " Celsius: " + getCelsiusMeasurement() + " Fahrenheit: " + getFahrenheitMeasurement() + " Kelvin: " + getKelvinMeasurement();
+        return " Celsius: " + getCelsiusMeasurement() + " Fahrenheit: " + getFahrenheitMeasurement() + " Kelvin: " + getKelvinMeasurement();
     }
 
     private static double truncateToTwoDecimals(double value) {

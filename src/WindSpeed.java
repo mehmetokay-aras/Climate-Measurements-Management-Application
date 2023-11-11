@@ -6,6 +6,11 @@ public class WindSpeed extends Measurement {
 
     private static final double MIN_VALUE = 0.0;
     private static final double MAX_VALUE = 113.2;
+    public WindSpeed(){
+        super();
+        metersPerSecond = initializeWindSpeed();
+        kmPerHour = convertKmPerHour();
+    }
 
     public WindSpeed(int year, int month) {
         super(year, month);
@@ -47,7 +52,7 @@ public class WindSpeed extends Measurement {
 
     @Override
     public String toString() {
-        return super.toString() + " metersPerSecond: " + getMetersPerSecond() + " kmPerHour: " + getKmPerHour();
+        return " metersPerSecond: " + getMetersPerSecond() + " kmPerHour: " + getKmPerHour();
     }
 
     @Override
